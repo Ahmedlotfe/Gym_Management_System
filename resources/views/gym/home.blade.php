@@ -159,9 +159,15 @@
                                     {{ $subscription->invitaions }} Invitaions
                                 </span></li>
                         </ul>
+                        @auth
                         <div class="foot">
                             <button style="text-decoration: none;color: black;border:none;background:none;">Book Now</button>
                         </div>
+                        @else
+                        <div class="foot">
+                            <a href="/login" style="text-decoration: none;color: black;border:none;background:none;">JOIN US</a>
+                        </div>
+                        @endauth
                     </div>
                 </form>
                 @endforeach
