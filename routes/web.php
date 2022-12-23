@@ -56,18 +56,18 @@ require __DIR__ . '/auth.php';
 
 
 Route::get('/welcome', [StoreController::class, 'welcome']);
-Route::get('/store', [StoreController::class, 'store'])->middleware('auth');
-Route::get('/cart', [CartItemController::class, 'cart'])->middleware('auth');
-Route::post('/add_cart/{product:slug}', [CartItemController::class, 'add_cart'])->middleware('auth');
-Route::post('/remove_cart/{product:slug}', [CartItemController::class, 'remove_cart'])->middleware('auth');
-Route::post('/remove_cart_item/{product:slug}', [CartItemController::class, 'remove_cart_item'])->middleware('auth');
+Route::get('/store', [StoreController::class, 'store'])->middleware(['auth', 'verified']);
+Route::get('/cart', [CartItemController::class, 'cart'])->middleware(['auth', 'verified']);
+Route::post('/add_cart/{product:slug}', [CartItemController::class, 'add_cart'])->middleware(['auth', 'verified']);
+Route::post('/remove_cart/{product:slug}', [CartItemController::class, 'remove_cart'])->middleware(['auth', 'verified']);
+Route::post('/remove_cart_item/{product:slug}', [CartItemController::class, 'remove_cart_item'])->middleware(['auth', 'verified']);
 
-Route::get('/checkout', [CheckoutController::class, 'checkout'])->middleware('auth');
-Route::post('/place_order', [CheckoutController::class, 'place_order'])->middleware('auth');
-Route::get('/payment', [PaymentController::class, 'payment_view'])->middleware('auth');
-Route::get('/order_complete', [OrderController::class, 'order_complete'])->middleware('auth');
+Route::get('/checkout', [CheckoutController::class, 'checkout'])->middleware(['auth', 'verified']);
+Route::post('/place_order', [CheckoutController::class, 'place_order'])->middleware(['auth', 'verified']);
+Route::get('/payment', [PaymentController::class, 'payment_view'])->middleware(['auth', 'verified']);
+Route::get('/order_complete', [OrderController::class, 'order_complete'])->middleware(['auth', 'verified']);
 
-Route::get('/add_product', [ProductController::class, 'create'])->middleware('auth')->middleware('admin');
+Route::get('/add_product', [ProductController::class, 'create'])->middleware(['auth', 'verified'])->middleware('admin');
 Route::post('/add_product', [ProductController::class, 'store'])->middleware('admin');
 
-Route::get('/{product:slug}', [ProductController::class, 'index'])->middleware('auth');
+Route::get('/{product:slug}', [ProductController::class, 'index'])->middleware(['auth', 'verified']);

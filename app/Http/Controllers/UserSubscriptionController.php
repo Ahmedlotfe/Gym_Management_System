@@ -8,13 +8,15 @@ use App\Models\UserSubscription;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
+use App\Models\Product;
 
 class UserSubscriptionController extends Controller
 {
     function home()
     {
-        return view('home', [
-            'subscriptions' => Subscription::all()
+        return view('gym.home', [
+            'subscriptions' => Subscription::all(),
+            'products' => Product::take(4)->get()
         ]);
     }
 

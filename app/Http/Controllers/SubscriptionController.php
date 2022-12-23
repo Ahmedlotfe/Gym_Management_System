@@ -17,7 +17,7 @@ class SubscriptionController extends Controller
         if (!$user_subscription) {
             return redirect('/');
         }
-        return view('subscription_payment', [
+        return view('gym.subscription_payment', [
             'user_subscription' => $user_subscription
         ]);
     }
@@ -66,7 +66,7 @@ class SubscriptionController extends Controller
                 ->where('subscriped', true)->first();
             $payment = Payment::where('pay_id', $transID)->first();
 
-            return view('subscription_complete', [
+            return view('gym.subscription_complete', [
                 'user_subscription' => $user_subscription,
                 'payment' => $payment
             ]);
