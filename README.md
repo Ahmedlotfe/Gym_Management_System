@@ -7,8 +7,6 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Learning Laravel
-
 # Gym Management System, Website to Help:
 
 -   The owner of the gym to manage the gym by knowing the subscribers in the gym and the expiry date of their
